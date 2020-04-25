@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header class="header">
+    <p class="header__info">Z powodu epidemii COVID-19, mogą nastąpić opóźnienia w niektórych lotach.</p>
+  </header>
+  <main class="main">
+    <div class="main__forms">
+  <form class="form form-init">
+    <h1 class="form-init__title">SimFly</h1>
+    <input type="text" class="form-init__place" placeholder="Miejsce wylotu">
+    <input type="text" class="form-init__place" placeholder="Cel podróży">
+    <input type="date" class="form-init__date" placeholder="Wylatuję...">
+    <input type="date" class="form-init__date" placeholder="Przylatuję...">
+    <div class="form-init__persons">
+      <div class="form-init__counter counter">
+        <button class="counter__button" data-for="adult" data-step="+">+</button>
+        <label for="counter__persons">
+        <span class="counter__info">Dorosły (14+):</span>  <input id="adult" type="number" min="1" value="1" class="counter__persons counter__persons--adult" name="counter__persons" data-age="adult">
+        </label>
+        <button class="counter__button" data-for="adult" data-step="-">-</button>
+      </div>
+      <div class="form-init__counter counter">
+        <button class="counter__button" data-for="child" data-step="+">+</button>
+        <label for="counter__persons">
+        <span class="counter__info">Dziecko (2-14):</span>  <input id="child" type="number" min="0" value="0" class="counter__persons counter__persons--child" name="counter__persons" data-age="child">
+        </label>
+        <button class="counter__button" data-for="child" data-step="-">-</button>
+      </div>
+      <div class="form-init__counter counter">
+        <button class="counter__button" data-for="infant" data-step="+">+</button>
+        <label for="counter__persons">
+        <span class="counter__info">Niemowlę (0-2):</span>  <input id="infant" type="number" min="0" value="0" class="counter__persons counter__persons--infant" name="counter__persons" data-age="infant">
+        </label>
+        <button class="counter__button" data-for="infant" data-step="-">-</button>
+      </div>
+    </div>
+  </form>
+  <form action="" class="form"><h2>2</h2></form>
+  <form action="" class="form"><h2>3</h2></form>
+  <form action="" class="form"><h2>4</h2></form>
+  <form action="" class="form"><h2>5</h2></form>
+</div>
+<div class="info">
+  <button class="info__button button--next">Dalej</button>
+  <div class="info__stepper stepper">
+    <span class="stepper__line"></span>
+    <div class="stepper__step-1 step active">1</div>
+    <div class="stepper__step-2 step">2</div>
+    <div class="stepper__step-3 step">3</div>
+    <div class="stepper__step-4 step">4</div>
+  </div>
+</div>
+</main>
+
+</body>
+</html>

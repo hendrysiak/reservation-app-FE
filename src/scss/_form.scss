@@ -1,0 +1,63 @@
+@import './variables';
+
+.form{
+  width: calc(100%/5);
+  max-width: 411px;
+  height: 70vh;
+  margin: auto 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px;
+  background-color: $main-color;
+  transition-duration: .5s;
+  transform: translateX(-10%);
+}
+.form-init{
+  &__title{
+    margin: 1vh 0;
+    text-align: center;
+  }
+  &__place{
+    height: 3em;
+    margin: 1vh 4vw;
+  }
+  &__date{
+    height: 3em;
+    margin: 1vh 4vw;
+  }
+  &__persons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-basis: 25%;
+    height: 3em;
+    margin: 1vh 4vw;
+  }
+}
+
+.counter{
+  display: flex;
+  justify-content: space-between;
+  label{
+    line-height: 5.5vh;
+    display: flex;
+    justify-content: space-around;
+  }
+  &__info{
+    width: 40%;
+    min-width: 120px;
+  }
+  &__persons{
+    width: 25%;
+    min-width: 40px;
+    text-align: center;
+  }
+  &__button{
+    width: 100%;
+    max-width: 3em;
+    height: 100%;
+    max-height: 3em;
+  }
+
+}
