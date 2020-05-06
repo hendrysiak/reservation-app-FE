@@ -158,3 +158,101 @@ section[data-sector="VI"]{
     margin-top: 1px;
   }
 }
+
+.KLM_B737_700_1{
+  background-image: url('../../assets/KLM_B737-700-1.jpg');
+  @include airbusContainer();
+}
+
+.KLM_B737_700_1Container{
+  position: relative;
+  width: 90px;
+  height: 600px;
+  margin: 181px 151px 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.KLM_B737_700_1Sector{
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  width: 15%;
+  flex-basis: 50%;
+  flex-wrap: wrap;
+  justify-content: center;
+  &:nth-child(1){
+    padding: 8px 0px 6px 0px;
+    max-height: 80px;
+    width: 50%;
+  }
+  &:nth-child(2){
+    padding: 8px 0px 6px 0px;
+    max-height: 80px;
+    width: 50%;
+    right: 0;
+  }
+  &:nth-child(3){
+    width: 50%;
+    max-height: 100px;
+    top: 114.5px;
+  }
+  &:nth-child(4){
+    width: 50%;
+    max-height: 100px;
+    right: 0;
+    top: 114.5px;
+  }
+  &:nth-child(5){
+    width: 50%;
+    max-height: 20px;
+    top: 205px
+  }
+  &:nth-child(6){
+    width: 50%;
+    max-height: 20px;
+    right: 0px;
+    top: 205px
+  }
+}
+
+.KLM_B737_700_1Sector[data-sector="III"]{
+  & div{
+    margin-top: 1px;
+  }
+}
+.KLM_B737_700_1Sector[data-sector="IV"]{
+  & div{
+    margin-top: 1px;
+  }
+}
+
+.KLM_B737_700_1SeatVip{
+  margin-top: 2.1px;
+  width: 10px;
+  height: 16.5px;
+  background-color: gold;
+  border: 1px solid black;
+  flex-basis: 25%;
+  cursor: pointer;
+  &.active{
+    background-color: blue;
+  }
+}
+
+.KLM_B737_700_1Seat{
+  margin-top: 1.7px;
+  width: 10px;
+  height: 16.5px;
+  background-color: lightgrey;
+  border: 1px solid black;
+  flex-basis: 25%;
+  cursor: pointer;
+  &.active{
+    background-color: blue;
+  }
+}
+
+.disabled {
+  background-color: red;
+}
