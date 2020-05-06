@@ -1,0 +1,46 @@
+.services{
+  &__title{
+    margin: 8px 0;
+    text-align: center;
+    flex: 1;
+  }
+  &__subtitle{
+    margin: 0px 0 8px 0;
+    flex: 1;
+  }
+  &__bundles{
+    margin-bottom: 8px;
+    align-self: center;
+    width: 90%;
+    flex: 14;
+    display: flex;
+    flex-direction: column;
+  }
+  &__bundle{
+    background-color: lightblue;
+    height: 32%;
+    margin: 3px 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__bundle-desc{
+    display: flex;
+    flex-direction: column;
+    flex: 7;
+    p{
+      
+      margin: 0;
+      font-size: 12px;
+      span{
+        width: 13px;
+        display: inline-block;
+        i{
+          margin: auto;
+        }
+        
+      }
+    }
+
+  }
+}

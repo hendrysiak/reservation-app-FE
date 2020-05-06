@@ -32,8 +32,13 @@ VIII:{},
 IX:{}
 }
 
+// Steper handler
+
 let step = 0;
-let transforming = 0
+
+// Init value must be '0'
+
+let transforming = -40
 const stepper = document.querySelectorAll('.step');
 
 const main: any = document.querySelector('.main__forms');
@@ -49,8 +54,24 @@ document.querySelector('.button--next').addEventListener('click', (): any => {
   stepper.forEach((step: any) => step.classList.remove('active'));
   stepper[step].classList.add('active');
 
-  main.style.transform = `translate(${transforming}%, 0)`
 });
+
+// Standard it should be inside function above
+
+main.style.transform = `translate(${transforming}%, 0)`
+
+
+// Min date handler
+
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth() > 9 ? today.getMonth() + 1 : `0${today.getMonth() + 1}`;
+const day = today.getDate() > 9 ? today.getDate() : `0${today.getDate()}`;
+
+const minDate = `${year}-${month}-${day}`;
+
+document.querySelector('.form-init__date').setAttribute('value', minDate);
+document.querySelector('.form-init__date').setAttribute('min', minDate);
 
 
 const activator = (event: any) => {
