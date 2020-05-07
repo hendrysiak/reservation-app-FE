@@ -38,7 +38,7 @@ let step = 0;
 
 // Init value must be '0'
 
-let transforming = -40
+let transforming = -60;
 const stepper = document.querySelectorAll('.step');
 
 const main: any = document.querySelector('.main__forms');
@@ -53,12 +53,12 @@ document.querySelector('.button--next').addEventListener('click', (): any => {
   };
   stepper.forEach((step: any) => step.classList.remove('active'));
   stepper[step].classList.add('active');
-
+  
 });
 
 // Standard it should be inside function above
 
-main.style.transform = `translate(${transforming}%, 0)`
+main.style.transform = `translate(${transforming}%, 0)`;
 
 
 // Min date handler

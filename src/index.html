@@ -9,6 +9,7 @@
 <body>
   <header class="header">
     <p class="header__info">Z powodu epidemii COVID-19, mogą nastąpić opóźnienia w niektórych lotach.</p>
+    <p class="header__login">Jesteś zalogowana/-y jako: <span id="login-info">niezalogowany</span></p>
   </header>
   <main class="main">
     <div class="main__forms">
@@ -95,7 +96,35 @@
       </div>
     </section>
   </form>
-  <form action="" class="form"><h2>4</h2></form>
+  <form action="" class="form summary">
+    <h2 class="summary__title">Podsumowanie</h2>
+    <div class="summary__info">
+    <h3 class="summary__subtitle">Łącznie do zapłaty:</h3>
+    <p class="summary__row">
+      <span class="summary__target">Osób dorosłych: </span>
+      <span class="summary__operation">
+        <span>2</span> x <span>50 $</span></span>
+        <span class="summary__sum">=<span>100 $</span></span></p>
+    <p class="summary__row">
+      <span class="summary__target">Dzieci: </span>
+      <span class="summary__operation">
+        <span>2</span> x <span>25 $</span></span>
+        <span class="summary__sum">=<span>50 $</span></span></p>
+    <p class="summary__row">
+      <span class="summary__target">Niemowląt: </span>
+      <span class="summary__operation">
+        <span>2</span> x <span>0 $</span></span>
+        <span class="summary__sum">=<span>0 $</span></span></p>
+    <h4 class="summary__row">RAZEM: <span>150 $</span></h4>
+    <p class="summary__row">Środki na koncie: <span>0 $</span></p>
+  </div>
+  <div class="summary__user-handler">
+    <input type="text" class="summary__login" placeholder="Login">
+    <input type="password" class="summary__password" placeholder="Hasło">
+    <button class="summary__log-in">Zaloguj się, by kupić</button>
+    <button class="summary__pay">Kup bez logowania</button>
+  </div>
+  </form>
   <form action="" class="form">
     <h2>Skutecznie dokonano rezerwacji!</h2>
     <p>Życzymy przyjemnej podróży</p>
