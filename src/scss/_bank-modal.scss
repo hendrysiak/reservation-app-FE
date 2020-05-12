@@ -1,0 +1,21 @@
+.bank-modal{
+  width: 100vw;
+  height: 100vh;
+  // min-width: 411px;
+  // min-height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+
+.bank{
+  width: 90%;
+  height: 90%;
+  background-color: $main-color;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
