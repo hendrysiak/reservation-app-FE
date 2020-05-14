@@ -1,13 +1,15 @@
 .bank-modal{
-  width: 100vw;
-  height: 100vh;
-  // min-width: 411px;
-  // min-height: 600px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 99;
+  display: none;
+  .--visible{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+  }
 }
 
 .bank{
@@ -18,4 +20,58 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  &__title{
+    text-align: center;
+  }
+  &__price{
+    margin-left: 10%;
+    span{
+      font-weight: bold;
+    }
+  }
+  &__data{
+    margin: 0 auto;
+    width: 60%;
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    input{
+      height: 20%;
+    }
+  }
+  &__name{
+    margin: 0 2.5% 0 0;
+    width: 37.5%
+  }
+  &__surname{
+    margin: 0 0 0 2.5%;
+    width: 37.5%
+  }
+  &__email{
+    width: 80%;
+  }
+  &__choose{
+    padding: 16px;
+    flex: 6;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-column-gap: 3.33%;
+    grid-row-gap: 3%;
+    @media (max-width: 600px) {
+      grid-template-columns: 47% 47%;
+      grid-column-gap: 3%;
+    }
+  }
+  &__other{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    @media (max-width: 600px) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
 }

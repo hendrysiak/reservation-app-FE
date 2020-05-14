@@ -38,13 +38,13 @@ let step = 0;
 
 // Init value must be '0'
 
-let transforming = -60;
+let transforming = 0;
 const stepper = document.querySelectorAll('.step');
 
 const main: any = document.querySelector('.main__forms');
 
 document.querySelector('.button--next').addEventListener('click', (): any => {
-  transforming -= 100/5
+  transforming -= 101/5
 
   if (step < 3) step = step + 1;
   else {
@@ -53,12 +53,12 @@ document.querySelector('.button--next').addEventListener('click', (): any => {
   };
   stepper.forEach((step: any) => step.classList.remove('active'));
   stepper[step].classList.add('active');
+  main.style.transform = `translate(${transforming}%, 0)`;
   
 });
 
 // Standard it should be inside function above
 
-main.style.transform = `translate(${transforming}%, 0)`;
 
 
 // Min date handler
