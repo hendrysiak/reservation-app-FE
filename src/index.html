@@ -15,24 +15,21 @@
     <div class="main__forms">
   <form class="form form-init">
     <h1 class="form-init__title">SimFly</h1>
-    <select class="form-init__place">
+    <select class="form-init__place" id='departure'>
       <option value="" disabled selected>Miejsce wylotu</option>
-      <option value="paris">Paryż</option>
-      <option value="tokyo">Tokio</option>
+      <option value="paris">Paris</option>
+      <option value="tokyo">Tokyo</option>
       <option value="radom">Radom</option>
     </select>
-    <select class="form-init__place">
+    <select class="form-init__place" id='destination'>  
       <option value="" disabled selected>Cel podróży</option>
-      <option value="paris">Paryż</option>
-      <option value="tokyo">Tokio</option>
+      <option value="paris">Paris</option>
+      <option value="tokyo">Tokyo</option>
       <option value="radom">Radom</option>
     </select>
     <input type="date" class="form-init__date" placeholder="Wylatuję...">
-    <select class="form-init__place">
+    <select class="form-init__time" id='time'>
       <option value="" disabled selected>Godzina wylotu</option>
-      <option value="paris">17:15</option>
-      <option value="tokyo">20:15</option>
-      <option value="radom">22:30</option>
     </select>
     <div class="form-init__persons">
       <div class="form-init__counter counter">

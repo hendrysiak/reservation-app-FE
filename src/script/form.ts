@@ -1,12 +1,18 @@
-document.querySelectorAll('.counter__button').forEach(button => button.addEventListener('click', (event: any): void => {
+document.querySelectorAll('.counter__button').forEach(button => button.addEventListener('click', (event: Event): void => {
   event.preventDefault();
-  const target = <string>event.target.dataset.for;
-  const task = <string>event.target.dataset.step;
-  const input = <any>document.getElementById(`${target}`);
+  const target: string = (event.target as HTMLButtonElement).dataset.for;
+  const task: string = (event.target as HTMLButtonElement).dataset.step;
+  const input: HTMLInputElement = document.getElementById(`${target}`) as HTMLInputElement;
+  let newValue;
   switch(task){
-    case '+': input.value ? input.value = input.value * 1 + 1: null;
+    case '+': 
+    newValue = Number(input.value) + 1;
+    input.value = `${newValue}`;
       break;
-    case '-': input.value > 0 ? input.value = input.value * 1 - 1: null;
+    case '-': 
+      if(input.id === 'adult' && Number(input.value) === 1) break;
+      newValue = Number(input.value) > 0 ? Number(input.value) - 1 : 0;
+      input.value = `${newValue}`;
       break;
   }
 }))

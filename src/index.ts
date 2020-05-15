@@ -1,10 +1,44 @@
   // tslint:disable: forin
 
-import { AIRBUS320Seats, DeltaA320_200_1Seats, KLM_B737_700_1Seats } from './js/variables';
+import { AIRBUS320Seats, DeltaA320_200_1Seats, KLM_B737_700_1Seats, timetable } from './js/variables';
 
 import  './script/form';
 
 import './scss/index.scss';
+
+
+const destinationChangeHandler = (select: HTMLSelectElement): void => {
+   const destinationOfFly = document.getElementById('destination');
+   destinationOfFly.innerHTML = '';
+    for (const departure in timetable) {
+      if (select.value === departure) {
+        for (const destination in timetable[departure]){
+          const option = document.createElement('option');
+          option.value = destination;
+          option.innerText = destination.charAt(0).toUpperCase() + destination.slice(1);
+          destinationOfFly.appendChild(option);
+        }
+      }
+    }
+}
+
+const setHourOfDeparture = (): void => {
+  const departureTimeSelect = document.getElementById('time');
+  departureTimeSelect.innerHTML = '';
+  const departure: HTMLSelectElement = document.getElementById('departure') as HTMLSelectElement;
+  const destination: HTMLSelectElement = document.getElementById('destination') as HTMLSelectElement;
+
+  timetable[departure.value][destination.value].forEach((hour: string) => {
+    const timeOption = document.createElement('option');
+    timeOption.value = hour;
+    timeOption.innerText = hour;
+    departureTimeSelect.appendChild(timeOption);
+  })
+
+}
+
+document.getElementById('departure').addEventListener('change', () => destinationChangeHandler(event.target as HTMLSelectElement));
+document.querySelectorAll('.form-init__place').forEach((place: HTMLSelectElement) => place.addEventListener('change', () => setHourOfDeparture()));
 
 // Struktura danych:
 // wylot:
@@ -19,8 +53,7 @@ I:{
   departure: "Paris",
   arrival: "Dubai",
   hours: ['17:00', '20:00', '22:00'],
-  freeSeats: ['A1', 'A2', 'A3'],
-  takenSeats: ['A4', 'A5', 'A6']
+  seats: ['A1', 'A2', 'A3'],
 },
 II:{},
 III:{},
@@ -73,6 +106,7 @@ const minDate = `${year}-${month}-${day}`;
 document.querySelector('.form-init__date').setAttribute('value', minDate);
 document.querySelector('.form-init__date').setAttribute('min', minDate);
 
+// Check if seat is taken
 
 const activator = (event: any) => {
   if (event.target.classList.contains('disabled')) {
@@ -81,6 +115,8 @@ const activator = (event: any) => {
   };
   event.target.classList.toggle('active')
 };
+
+// displaying seats
 
 const seatConstructor_AIRBUS320 = (AIRBUS320Seats: any) => {
   const AIRBUS320 = document.createElement('div');
