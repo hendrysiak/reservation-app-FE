@@ -2,7 +2,7 @@
 
 body{
   overflow: hidden;
-  background-color: black;
+  background: url('../../assets/airport-2373727_1920.jpg');
 }
 
 button{
@@ -24,13 +24,13 @@ button{
 }
 
 .info{
-  margin-top: 16px;
+  padding-top: 16px;
   width: 100%;
   max-width: 411px;
   position: fixed;
   display: flex;
   flex-direction: column;
-
+  background-color: rgba(0%,0%,0%, .5);
 }
 
 .stepper{
@@ -66,9 +66,11 @@ button{
 } 
 
 .main{
+  padding-top: 8px;
   overflow-x: hidden;
   width: 100vw;
   max-width: 411px;
+  background-color: rgba(0%,0%,0%, .5);
 }
 
 .main__forms{

@@ -500,6 +500,37 @@ export const KLM_B737_700_1Seats: any = {
   },
 }
 
+export const formValidator = () => {
+  const form = Array.from(document.querySelector('.form-init').getElementsByTagName('select'));
+  const persons = Array.from(document.querySelector('.form-init__persons').getElementsByTagName('input'));
+
+  let passUser = true;
+
+  form.forEach((select: HTMLSelectElement) => {
+    if (!select.value) {
+      passUser = false;
+      select.style.border = '2px solid red'
+    } else {
+      select.style.border = ''
+    }
+  });
+  persons.forEach((input: HTMLInputElement) => {
+    if (!input.value) {
+      passUser = false;
+      input.style.border = '2px solid red'
+    } else {
+      input.style.border = ''
+    }
+  });
+  return passUser
+}
+
+export const employedPlane: any = {
+  paris: 'AIRBUS320S',
+  tokyo: 'DeltaA320_200_1',
+  radom: 'KLM_B737_700_1'
+};
+
 export const timetable: any = {
   paris: {
     tokyo: ['14:30','17:15', '22:45'],

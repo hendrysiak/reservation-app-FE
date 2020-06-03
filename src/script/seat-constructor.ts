@@ -1,5 +1,7 @@
   // tslint:disable: forin
 
+
+  
 // Check if seat is taken
 
 export const activator = (event: any) => {

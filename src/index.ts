@@ -1,6 +1,6 @@
   // tslint:disable: forin
 
-import { AIRBUS320Seats, DeltaA320_200_1Seats, KLM_B737_700_1Seats, timetable } from './js/variables';
+import { AIRBUS320Seats, DeltaA320_200_1Seats, employedPlane, formValidator, KLM_B737_700_1Seats, timetable } from './js/variables';
 import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats} from './script/seat-constructor';
 
 import  './script/form';
@@ -61,36 +61,11 @@ document.getElementById('destination').addEventListener('change', (event) => {
 });
 document.querySelectorAll('.form-init__place').forEach((place: HTMLSelectElement) => place.addEventListener('change', () => setHourOfDeparture()));
 
-
-const formValidator = () => {
-  const form = Array.from(document.querySelector('.form-init').getElementsByTagName('select'));
-  const persons = Array.from(document.querySelector('.form-init__persons').getElementsByTagName('input'));
-
-  let passUser = true;
-
-  form.forEach((select: HTMLSelectElement) => {
-    if (!select.value) {
-      passUser = false;
-      select.style.border = '2px solid red'
-    } else {
-      select.style.border = ''
-    }
-  });
-  persons.forEach((input: HTMLInputElement) => {
-    if (!input.value) {
-      passUser = false;
-      input.style.border = '2px solid red'
-    } else {
-      input.style.border = ''
-    }
-  });
-  return passUser
-}
+const selects = document.getElementsByTagName('select');
+const inputs = document.getElementsByTagName('input');
+const formsInputs = [...Array.from(selects), ...Array.from(inputs)];
 
 const sessionStorageSetter = () => {
-  const selects = document.getElementsByTagName('select');
-  const inputs = document.getElementsByTagName('input');
-  const formsInputs = [...Array.from(selects), ...Array.from(inputs)];
   formsInputs.forEach(el => el.addEventListener('change', () => {
     sessionStorage.setItem(el.id, el.value);
   }));
@@ -102,6 +77,12 @@ const sessionStorageSetter = () => {
   });
 
 };
+
+const setSessonsVariables = () => {
+  formsInputs.forEach(el => {
+    sessionStorage.setItem(el.id, el.value);
+  });
+}
 
 // document.querySelector('.info__button button--next').addEventListener('click', () => sessionStorageSetter());
 
@@ -131,6 +112,20 @@ VIII:{},
 IX:{}
 }
 
+const switchEmployedPlane = (plane: string) => {
+  switch (plane) {
+    case 'AIRBUS320S':
+      seatConstructor_AIRBUS320(AIRBUS320Seats);
+      break;
+    case 'DeltaA320_200_1':
+      seatConstructor_DeltaA320_200_1Seats(DeltaA320_200_1Seats);
+      break;
+    case 'KLM_B737_700_1':
+      seatConstructor_KLM_B737_700_1Seats(KLM_B737_700_1Seats);
+      break;
+  }
+}
+
 // Steper handler
 
 let step = 0;
@@ -140,14 +135,15 @@ let step = 0;
 let transforming = 0;
 const stepper = document.querySelectorAll('.step');
 
-const main: any = document.querySelector('.main__forms');
+const main: HTMLElement = document.querySelector('.main__forms');
 
-document.querySelector('.button--next').addEventListener('click', (): any => {
+document.querySelector('.button--next').addEventListener('click', (): void => {
   const validation = formValidator();
   if (!validation) return;
-  sessionStorageSetter();
+  setSessonsVariables();
 
   if (validation) {
+    switchEmployedPlane(employedPlane[sessionStorage.getItem('departure')]);
     transforming -= 101/5
 
     if (step < 3) step = step + 1;
@@ -155,20 +151,10 @@ document.querySelector('.button--next').addEventListener('click', (): any => {
       step = 0
       transforming = 0;
     };
-    stepper.forEach((step: any) => step.classList.remove('active'));
+    stepper.forEach((stepCircle: HTMLDivElement) => stepCircle.classList.remove('active'));
     stepper[step].classList.add('active');
     main.style.transform = `translate(${transforming}%, 0)`;
   }
 
   
 });
-
-// Standard it should be inside function above
-
-
-
-
-seatConstructor_DeltaA320_200_1Seats(DeltaA320_200_1Seats);
-// seatConstructor_AIRBUS320(AIRBUS320Seats);
-// seatConstructor_KLM_B737_700_1Seats(KLM_B737_700_1Seats);
-
