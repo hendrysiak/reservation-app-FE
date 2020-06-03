@@ -7,24 +7,40 @@ import  './script/form';
 
 import './scss/index.scss';
 
+// Min date handler
+
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth() > 9 ? today.getMonth() + 1 : `0${today.getMonth() + 1}`;
+const day = today.getDate() > 9 ? today.getDate() : `0${today.getDate()}`;
+
+const minDate = `${year}-${month}-${day}`;
+
+document.querySelector('.form-init__date').setAttribute('value', minDate);
+document.querySelector('.form-init__date').setAttribute('min', minDate);
 
 const destinationChangeHandler = (select: HTMLSelectElement): void => {
    const destinationOfFly = document.getElementById('destination');
+   destinationOfFly.style.border = ''
    destinationOfFly.innerHTML = '';
     for (const departure in timetable) {
       if (select.value === departure) {
         for (const destination in timetable[departure]){
           const option = document.createElement('option');
+          if (!sessionStorage.getItem('destination')) sessionStorage.setItem('destination', destination);
           option.value = destination;
           option.innerText = destination.charAt(0).toUpperCase() + destination.slice(1);
           destinationOfFly.appendChild(option);
         }
       }
     }
+    
+    if (!sessionStorage.getItem('date')) sessionStorage.setItem('date', minDate);
 }
 
 const setHourOfDeparture = (): void => {
   const departureTimeSelect = document.getElementById('time');
+  departureTimeSelect.style.border = ''
   departureTimeSelect.innerHTML = '';
   const departure: HTMLSelectElement = document.getElementById('departure') as HTMLSelectElement;
   const destination: HTMLSelectElement = document.getElementById('destination') as HTMLSelectElement;
@@ -35,10 +51,14 @@ const setHourOfDeparture = (): void => {
     timeOption.innerText = hour;
     departureTimeSelect.appendChild(timeOption);
   })
-
+  if (!sessionStorage.getItem('time')) sessionStorage.setItem('time', timetable[departure.value][destination.value][0]);
 }
 
 document.getElementById('departure').addEventListener('change', () => destinationChangeHandler(event.target as HTMLSelectElement));
+document.getElementById('destination').addEventListener('change', (event) => {
+  const target = event.currentTarget as HTMLSelectElement
+  console.log(target.value);
+});
 document.querySelectorAll('.form-init__place').forEach((place: HTMLSelectElement) => place.addEventListener('change', () => setHourOfDeparture()));
 
 
@@ -67,22 +87,23 @@ const formValidator = () => {
   return passUser
 }
 
-const localStorageSetter = () => {
+const sessionStorageSetter = () => {
   const selects = document.getElementsByTagName('select');
   const inputs = document.getElementsByTagName('input');
   const formsInputs = [...Array.from(selects), ...Array.from(inputs)];
   formsInputs.forEach(el => el.addEventListener('change', () => {
-    localStorage.setItem(el.id, el.value);
+    sessionStorage.setItem(el.id, el.value);
   }));
 
   formsInputs.forEach(el => {
-    const item = localStorage.getItem(el.id);
-    if (!item) localStorage.setItem(el.id, el.value);
+    const item = sessionStorage.getItem(el.id);
+    if (!item) sessionStorage.setItem(el.id, el.value);
 
   });
-  // TODO - set initial value
+
 };
-localStorageSetter();
+
+// document.querySelector('.info__button button--next').addEventListener('click', () => sessionStorageSetter());
 
 
 // Struktura danych:
@@ -91,7 +112,7 @@ localStorageSetter();
 // godziny:
 // wolne miejsca
 
-// Do localstorage
+// Do sessionStorage
 
 const db = {
 I:{
@@ -123,6 +144,8 @@ const main: any = document.querySelector('.main__forms');
 
 document.querySelector('.button--next').addEventListener('click', (): any => {
   const validation = formValidator();
+  if (!validation) return;
+  sessionStorageSetter();
 
   if (validation) {
     transforming -= 101/5
@@ -143,17 +166,7 @@ document.querySelector('.button--next').addEventListener('click', (): any => {
 // Standard it should be inside function above
 
 
-// Min date handler
 
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth() > 9 ? today.getMonth() + 1 : `0${today.getMonth() + 1}`;
-const day = today.getDate() > 9 ? today.getDate() : `0${today.getDate()}`;
-
-const minDate = `${year}-${month}-${day}`;
-
-document.querySelector('.form-init__date').setAttribute('value', minDate);
-document.querySelector('.form-init__date').setAttribute('min', minDate);
 
 seatConstructor_DeltaA320_200_1Seats(DeltaA320_200_1Seats);
 // seatConstructor_AIRBUS320(AIRBUS320Seats);
