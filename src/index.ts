@@ -144,6 +144,11 @@ document.querySelector('.button--next').addEventListener('click', (): void => {
 
   if (validation) {
     switchEmployedPlane(employedPlane[sessionStorage.getItem('departure')]);
+    const numberOfSeats: number = Number(sessionStorage.getItem('adult')) 
+    + Number(sessionStorage.getItem('child')) 
+    + Number(sessionStorage.getItem('infant'));
+
+    sessionStorage.setItem('number-of-seats', `${numberOfSeats}`);
     transforming -= 101/5
 
     if (step < 3) step = step + 1;
