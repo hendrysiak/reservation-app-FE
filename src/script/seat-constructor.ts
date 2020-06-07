@@ -9,18 +9,15 @@ export const activator = (event: any) => {
     alert('Miejsce zajęte!');
     return
   } else {
-
-  //TODO - przebudować logikę na add i remove z checkiem na active
   const seatToChange = Number(sessionStorage.getItem('number-of-seats'));
-  if (seatToChange === 0) return alert('Wszystkie miejsca zarezerowane!');
-
-  event.target.classList.toggle('active')
-
-  if (event.target.classList.contains('active')) {
-    sessionStorage.setItem('number-of-seats', `${seatToChange - 1}`)
-  } else {
-    sessionStorage.setItem('number-of-seats', `${seatToChange + 1}`)
-  }
+    if (event.target.classList.contains('active')) {
+      event.target.classList.remove('active')
+      sessionStorage.setItem('number-of-seats', `${seatToChange + 1}`)
+    } else {
+      if (seatToChange === 0) return alert('Wszystkie miejsca zarezerowane!');
+      event.target.classList.add('active')
+      sessionStorage.setItem('number-of-seats', `${seatToChange - 1}`)
+    }
   }
 };
 

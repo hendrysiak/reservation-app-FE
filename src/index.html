@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
   <title>SimFly - podróżuj najtaniej</title>
   <script src="https://kit.fontawesome.com/f1c68147f3.js" crossorigin="anonymous"></script>
 </head>
@@ -72,7 +73,8 @@
         <p><span><i class="fas fa-calendar-alt"></i></span> Odprawa do 30 dni przed wylotem</p>
         <p><span><i class="fas fa-utensils"></i></span> Posiłek na pokładzie (w cenie)</p>
         </div>
-        <button>Wybierz za <span class="services__value-btn">15 $</span></button>
+        <strong>CENA: </strong><span id="package-plus">15 $</span>
+        <button class="services__value-btn" data-package="plus">Wybierz</button>
       </div>
       <div value="standard" class="services__bundle">
         <h3 class="services__subtitle">Pakiet BUSINESS</h3>
@@ -81,7 +83,8 @@
         <p><span><i class="fas fa-suitcase-rolling"></i></span> Bagaż dodatkowy (55 x 40 x 23 cm) w kabinie</p>
         <p><span><i class="fas fa-calendar-alt"></i></span> Odprawa do 30 dni przed wylotem</p>
       </div>
-        <button>Wybierz za <span class="services__value-btn">15 $</span></button>
+        <strong>CENA: </strong><span id="package-business">15 $</span>
+        <button class="services__value-btn" data-package="business">Wybierz</button>
       </div>
       <div value="standard" class="services__bundle">
         <h3 class="services__subtitle">Pakiet BASIC</h3>
@@ -89,7 +92,8 @@
         <p><span><i class="fas fa-suitcase"></i></span> Bagaż podręczny (40 x 30 x 20) pod fotelem</p>
         <p><span><i class="fas fa-calendar-alt"></i></span> Odprawa do 2 dni przed wylotem</p>
       </div>
-        <button>Wybierz za <span class="services__value-btn">15 $</span></button>
+        <strong>CENA: </strong><span id="package-basic">15 $</span>
+        <button class="services__value-btn" data-package="basic">Wybierz</button>
       </div>
     </section>
   </form>
@@ -100,19 +104,29 @@
     <p class="summary__row">
       <span class="summary__target">Osób dorosłych: </span>
       <span class="summary__operation">
-        <span>2</span> x <span>50 $</span></span>
-        <span class="summary__sum">=<span>100 $</span></span></p>
+        <span class="summary__target-adult--amount">2</span> x <span class="summary__target-adult--price">50 $</span></span>
+        <span class="summary__sum">=<span class="summary__target-adult--summary">100 $</span></span></p>
     <p class="summary__row">
       <span class="summary__target">Dzieci: </span>
       <span class="summary__operation">
-        <span>2</span> x <span>25 $</span></span>
-        <span class="summary__sum">=<span>50 $</span></span></p>
+        <span class="summary__target-child--amount">2</span> x <span class="summary__target-child--price">25 $</span></span>
+        <span class="summary__sum">=<span class="summary__target-child--summary">50 $</span></span></p>
     <p class="summary__row">
       <span class="summary__target">Niemowląt: </span>
       <span class="summary__operation">
-        <span>2</span> x <span>0 $</span></span>
-        <span class="summary__sum">=<span>0 $</span></span></p>
-    <h4 class="summary__row">RAZEM: <span>150 $</span></h4>
+        <span class="summary__target-infant--amount">2</span> x <span class="summary__target-infant--price">0 $</span></span>
+        <span class="summary__sum">=<span class="summary__target-infant--summary">0 $</span></span></p>
+    <p class="summary__row">
+      <span class="summary__target">Miejsc VIP: </span>
+      <span class="summary__operation">
+        <span class="summary__target-vip-seats--amount">2</span> x <span class="summary__target-vip-seats--price">20 $</span></span>
+        <span class="summary__sum">=<span class="summary__target-vip-seats--summary">40 $</span></span></p>
+    <!-- <p class="summary__row">
+      <span class="summary__target">Dopłaty za pakiet: </span>
+      <span class="summary__operation">
+        <span class="summary__target-package--amount">1</span> x <span class="summary__target-package--price">20 $</span></span>
+        <span class="summary__sum">=<span class="summary__target-package--summary">40 $</span></span></p> -->
+    <h4 class="summary__row">RAZEM: <span class="summary__sum--all">190 $</span></h4>
     <p class="summary__row">Środki na koncie: <span>0 $</span></p>
   </div>
   <div class="summary__user-handler">

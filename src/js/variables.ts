@@ -526,7 +526,7 @@ export const formValidator = () => {
 }
 
 export const employedPlane: any = {
-  paris: 'AIRBUS320S',
+  paris: 'AIRBUS320',
   tokyo: 'DeltaA320_200_1',
   radom: 'KLM_B737_700_1'
 };
@@ -543,5 +543,23 @@ export const timetable: any = {
   radom: {
     paris: ['1:00', '8:00', '15:00'],
     tokyo: ['21:00', '3:00', '9:00']
+  }
+}
+
+export const pricing: any = {
+  paris: {
+    tokyo: 200,
+    radom: 50,
+    VIP: 20
+  },
+  tokyo: {
+    paris: 220,
+    radom: 200,
+    VIP: 30
+  },
+  radom: {
+    paris: 40,
+    tokyo: 230,
+    VIP: 20
   }
 }

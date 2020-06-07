@@ -44,3 +44,9 @@
 
   }
 }
+
+.package-button{
+  &--active{
+    background-color: yellow;
+  }
+}

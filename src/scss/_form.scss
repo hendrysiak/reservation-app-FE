@@ -3,7 +3,7 @@
 .form{
   width: calc(100%/5);
   max-width: 411px;
-  height: 70vh;
+  height: 576px;
   margin: auto 16px;
   display: flex;
   flex-direction: column;
@@ -20,15 +20,15 @@
   }
   &__place{
     height: 3em;
-    margin: 1vh 3vw;
+    margin: 1vh 2.5vw;
   }
   &__time{
     height: 3em;
-    margin: 1vh 3vw;
+    margin: 1vh 2.5vw;
   }
   &__date{
     height: 3em;
-    margin: 1vh 3vw;
+    margin: 1vh 2.5vw;
   }
   &__persons{
     display: flex;
@@ -36,7 +36,7 @@
     justify-content: space-around;
     flex-basis: 25%;
     height: 3em;
-    margin: 1vh 3vw;
+    margin: 1vh 2.5vw;
   }
 }
 
@@ -44,7 +44,7 @@
   display: flex;
   justify-content: space-between;
   label{
-    line-height: 5.5vh;
+    line-height: 4vh;
     display: flex;
     justify-content: space-around;
   }
@@ -58,6 +58,7 @@
     text-align: center;
   }
   &__button{
+    margin: auto;
     width: 100%;
     max-width: 3em;
     height: 100%;
