@@ -1,4 +1,7 @@
 .services{
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
   &__title{
     margin: 8px 0;
     text-align: center;
@@ -23,6 +26,9 @@
     padding: 8px;
     display: flex;
     flex-direction: column;
+  }
+  &__summary{
+    display: flex;
   }
   &__bundle-desc{
     display: flex;

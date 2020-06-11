@@ -73,7 +73,7 @@
         <p><span><i class="fas fa-calendar-alt"></i></span> Odprawa do 30 dni przed wylotem</p>
         <p><span><i class="fas fa-utensils"></i></span> Posiłek na pokładzie (w cenie)</p>
         </div>
-        <strong>CENA: </strong><span id="package-plus">15 $</span>
+        <div class="services__summary"><strong>CENA: </strong><span id="package-plus">15 $</span></div>
         <button class="services__value-btn" data-package="plus">Wybierz</button>
       </div>
       <div value="standard" class="services__bundle">
@@ -83,7 +83,7 @@
         <p><span><i class="fas fa-suitcase-rolling"></i></span> Bagaż dodatkowy (55 x 40 x 23 cm) w kabinie</p>
         <p><span><i class="fas fa-calendar-alt"></i></span> Odprawa do 30 dni przed wylotem</p>
       </div>
-        <strong>CENA: </strong><span id="package-business">15 $</span>
+        <div class="services__summary"><strong>CENA: </strong><span id="package-business">15 $</span></div>
         <button class="services__value-btn" data-package="business">Wybierz</button>
       </div>
       <div value="standard" class="services__bundle">
@@ -92,7 +92,7 @@
         <p><span><i class="fas fa-suitcase"></i></span> Bagaż podręczny (40 x 30 x 20) pod fotelem</p>
         <p><span><i class="fas fa-calendar-alt"></i></span> Odprawa do 2 dni przed wylotem</p>
       </div>
-        <strong>CENA: </strong><span id="package-basic">15 $</span>
+      <div class="services__summary"><strong>CENA: </strong><span id="package-basic">15 $</span></div>
         <button class="services__value-btn" data-package="basic">Wybierz</button>
       </div>
     </section>
@@ -130,8 +130,6 @@
     <p class="summary__row">Środki na koncie: <span>0 $</span></p>
   </div>
   <div class="summary__user-handler">
-    <input type="text" class="summary__login" placeholder="Login">
-    <input type="password" class="summary__password" placeholder="Hasło">
     <button class="summary__log-in">Zaloguj się, by kupić</button>
     <button class="summary__pay">Kup bez logowania</button>
   </div>
@@ -152,8 +150,8 @@
   </div>
 </div>
 </main>
-<div class="bank-modal">
-  <div class="bank">
+<div class="modal bank">
+  <div class="bank__modal">
     <h2 class="bank__title">Wybierz bank</h2>
     <p class="bank__price">Kwota do zapłaty: <span class="bank__value">300 $</span></p>
   <form action="" class="bank__data">
@@ -177,6 +175,16 @@
     <button class="bank__other">Inny (przelew tradycyjny)</button>
   </section>
   </div>
+</div>
+<div class="modal login ">
+  <form action="" class="login__form form">
+  <input type="text" class="login__mail" placeholder="Login">
+  <input type="password" class="login__password" placeholder="Hasło">
+  <button class="summary__log-in">Zaloguj się, by kupić</button>
+</form>
+</div>
+<div class="modal  spinner">
+  <div class="lds-hourglass"></div>
 </div>
 <!-- TODO:
 - information aside (order summary);

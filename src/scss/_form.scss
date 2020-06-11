@@ -3,7 +3,9 @@
 .form{
   width: calc(100%/5);
   max-width: 411px;
-  height: 576px;
+  // height: 576px; // 70%?
+  height: 100%;
+  max-height: 476px; // 70%?
   margin: auto 16px;
   display: flex;
   flex-direction: column;

@@ -152,7 +152,7 @@ const movingHandler = (transforming: number) => {
   const marginRight = parseInt(style.marginRight) || 0;
 
 
-  transforming -= form.clientWidth + marginLeft + marginRight + marginRight * .75;
+  transforming -= form.clientWidth + marginRight + 32;
   sessionStorage.setItem('transforming', `${transforming}`)
 
   const main: HTMLElement = document.querySelector('.main__forms');

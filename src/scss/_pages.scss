@@ -27,7 +27,7 @@ button{
 }
 
 .info{
-  padding-top: 16px;
+  margin-top: 16px;
   width: 100%;
   max-width: 411px;
   // position: fixed;
@@ -70,22 +70,23 @@ button{
 } 
 
 .main{
-  padding-top: 8px;
+  // padding-top: 8px;
   overflow-x: hidden;
   width: 100vw;
   max-width: 411px;
   background-color: rgba(0%,0%,0%, .5);
   min-height: 60vh;
-  @media (max-width: 500px) {
-    height: 100%;
+  @media (max-width: 500px) { //ustalić optymalną wielkość na innych ekranach
+    height: 100vh;
   }
 }
 
 .main__forms{
   position: relative;
-  left: 38px;
+  left: 16px;
+  padding-left: 16px;
   width: 500%;
-  height: 75%;
+  height: 65%;
   display: flex;
   justify-content: space-between;
   transition: 1s;

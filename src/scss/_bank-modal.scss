@@ -1,18 +1,5 @@
-.bank-modal{
-  display: none;
-  .--visible{
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 99;
-  }
-}
-
-.bank{
+.bank {
+  &__modal{
   width: 90%;
   height: 90%;
   background-color: $main-color;
@@ -22,6 +9,7 @@
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  }
   &__title{
     text-align: center;
   }
