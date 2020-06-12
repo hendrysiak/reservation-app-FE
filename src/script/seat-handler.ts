@@ -1,6 +1,29 @@
   // tslint:disable: forin
 
+  import { Flight, Seats } from '../models/orders';
+import { seatsVerify } from './api-handlers/seats'
 
+export const checkSeat = async (plane: string) => {
+  
+  document.querySelector('.loader').classList.add('modal--visible')
+  const flight: Flight = {
+    departure: sessionStorage.getItem('departure'),
+    destination: sessionStorage.getItem('destination'),
+    hour: sessionStorage.getItem('time'),
+    date: sessionStorage.getItem('date').split('-').reverse().join('.')
+  }
+
+  const dataOfFlight = await seatsVerify(flight);
+console.log(dataOfFlight.seats, plane);
+  if (dataOfFlight) {
+    dataOfFlight.seats.forEach((seat: Seats) => {
+      document.querySelectorAll(`.${plane}`).forEach((planeSeat: HTMLDivElement) => {
+        if (planeSeat.dataset.seat === `${seat.row}${seat.seat}`) planeSeat.classList.add('disabled')
+      });
+    });
+  } 
+  document.querySelector('.loader').classList.remove('modal--visible')
+};
   
 // Check if seat is taken
 

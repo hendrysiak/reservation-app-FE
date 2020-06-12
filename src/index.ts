@@ -1,10 +1,11 @@
   // tslint:disable: forin
 
 import { AIRBUS320Seats, DeltaA320_200_1Seats, employedPlane, formValidator, KLM_B737_700_1Seats, pricing, timetable } from './js/variables';
-import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats} from './script/seat-constructor';
+import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats, checkSeat} from './script/seat-handler';
 
 import  './script/form';
 import './script/login-handler';
+import './script/payment-handler';
 import './scss/index.scss';
 
 // Min date handler
@@ -119,12 +120,15 @@ const switchEmployedPlane = (plane: string) => {
   switch (plane) {
     case 'AIRBUS320':
       seatConstructor_AIRBUS320(AIRBUS320Seats);
+      checkSeat('AIRBUS320Seat')
       break;
     case 'DeltaA320_200_1':
       seatConstructor_DeltaA320_200_1Seats(DeltaA320_200_1Seats);
+      checkSeat('DeltaA320_200_1Seat')
       break;
     case 'KLM_B737_700_1':
       seatConstructor_KLM_B737_700_1Seats(KLM_B737_700_1Seats);
+      checkSeat('KLM_B737_700_1Seat')
       break;
   }
 }
@@ -267,6 +271,7 @@ const settingPaymentOptions = () => {
   buttonToPay.addEventListener('click', (e) => {
     e.preventDefault();
     document.querySelector('.bank').classList.add('modal--visible');
+    document.querySelector('.bank__value').innerHTML = `${sessionStorage.getItem('price') ? sessionStorage.getItem('price') : 0} $`
   });
 
   buttonToLogIn.addEventListener('click', (e) => {
@@ -314,6 +319,10 @@ const summaryDisplayHandler = () => {
   document.querySelector(`.${className}-vip-seats--summary`).innerHTML = `${vipSeats * vipPrice} $`;
 
   document.querySelector('.summary__sum--all').innerHTML = `${sessionStorage.getItem('price')} $`;
+
+  const accountState = JSON.parse(sessionStorage.getItem('user')).accountState;
+
+  document.querySelector('.summary__account').innerHTML = `${accountState ? accountState : 0} $`
 
   settingPaymentOptions();
 

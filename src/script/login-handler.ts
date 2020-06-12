@@ -1,19 +1,6 @@
 import { logInHandler } from './api-handlers/user';
 
-const inputValidator = (input: HTMLInputElement) => {
-  if (!input.value) {
-    input.style.border = '2px solid red';
-    return false;
-  } else if (input.dataset.input === "email"){
-    if(input.value.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")) return true;
-    else {
-      input.style.border = '2px solid red';
-      return false
-    }
-  }
-  input.style.border = 'none';
-  return true;
-};
+import { inputValidator } from './helpers';
 
 const loginHandler = async (email: string, password: string) => {
   const user = { email, password };
@@ -23,7 +10,7 @@ const loginHandler = async (email: string, password: string) => {
   if (userLoggedIn) {
 
     document.querySelector('.loader').classList.remove('modal--visible')
-    sessionStorage.setItem('user', userLoggedIn);
+    sessionStorage.setItem('user', JSON.stringify(userLoggedIn));
     document.getElementById('login-info').innerHTML = userLoggedIn.email;
     document.querySelector('.login__sign-in').innerHTML = "Wyloguj";
     document.querySelector('.login').classList.remove('modal--visible');
@@ -40,11 +27,12 @@ document.querySelector('.login__sign-in').addEventListener('click', (event: Even
 
   const logIn = event.target as HTMLSpanElement;
 
-  if (sessionStorage.getItem('user') && window.confirm("Czy napewno chcesz się wylogować?")) {
-
-    sessionStorage.removeItem('user');
-    logIn.innerHTML = "Zaloguj";
-    document.getElementById('login-info').innerHTML = "niezalogowany";
+  if (sessionStorage.getItem('user')) {
+    if (window.confirm("Czy napewno chcesz się wylogować?")){
+      sessionStorage.removeItem('user');
+      logIn.innerHTML = "Zaloguj";
+      document.getElementById('login-info').innerHTML = "niezalogowany";
+    } else return;
 
   } else document.querySelector('.login').classList.add('modal--visible');
 });
