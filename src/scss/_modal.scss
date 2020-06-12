@@ -14,3 +14,6 @@
     align-items: center;
   }
 }
+.modal.loader.modal--visible{
+  z-index: 1000;
+}

@@ -62,4 +62,10 @@
       grid-column-end: 3;
     }
   }
+  &__close{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
 }

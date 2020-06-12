@@ -4,7 +4,7 @@ import { AIRBUS320Seats, DeltaA320_200_1Seats, employedPlane, formValidator, KLM
 import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats} from './script/seat-constructor';
 
 import  './script/form';
-
+import './script/login-handler';
 import './scss/index.scss';
 
 // Min date handler
@@ -260,6 +260,30 @@ const packageHandler = () => {
   }
 };
 
+const settingPaymentOptions = () => {
+  const buttonToLogIn: HTMLButtonElement = document.querySelector('.summary__log-in');
+  const buttonToPay: HTMLButtonElement = document.querySelector('.summary__pay');
+
+  buttonToPay.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.bank').classList.add('modal--visible');
+  });
+
+  buttonToLogIn.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.login').classList.add('modal--visible');
+  });
+
+  if (sessionStorage.getItem('user')) {
+    buttonToPay.innerHTML = "Doładuj konto";
+    buttonToLogIn.style.display = "none";
+  } else {
+    buttonToPay.innerHTML = "Kup bez logowania";
+    buttonToLogIn.style.display = "block";
+    buttonToLogIn.innerHTML = "Zaloguj się by kupić"
+  }
+}
+
 const summaryDisplayHandler = () => {
 
   const className = 'summary__target';
@@ -290,6 +314,8 @@ const summaryDisplayHandler = () => {
   document.querySelector(`.${className}-vip-seats--summary`).innerHTML = `${vipSeats * vipPrice} $`;
 
   document.querySelector('.summary__sum--all').innerHTML = `${sessionStorage.getItem('price')} $`;
+
+  settingPaymentOptions();
 
 };
 

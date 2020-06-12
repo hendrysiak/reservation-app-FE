@@ -7,5 +7,13 @@
   &__login{
     margin: 8px 0 0 0;
     color: white;
+    max-width: 411px;
+    display: flex;
+    justify-content: space-between;
   }
+}
+
+.login__sign-in{
+  font-weight: bold;
+  cursor: pointer;
 }
