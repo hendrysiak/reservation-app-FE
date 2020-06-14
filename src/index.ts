@@ -3,9 +3,11 @@
 import { AIRBUS320Seats, DeltaA320_200_1Seats, employedPlane, formValidator, KLM_B737_700_1Seats, pricing, timetable } from './js/variables';
 import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats, checkSeat} from './script/seat-handler';
 
+import './script/bank-handler';
 import  './script/form';
 import './script/login-handler';
 import './script/payment-handler';
+
 import './scss/index.scss';
 
 // Min date handler
@@ -88,33 +90,6 @@ const setSessonsVariables = () => {
   });
 }
 
-// document.querySelector('.info__button button--next').addEventListener('click', () => sessionStorageSetter());
-
-
-// Struktura danych:
-// wylot:
-// przylot:
-// godziny:
-// wolne miejsca
-
-// Do sessionStorage
-
-const db = {
-I:{
-  departure: "Paris",
-  arrival: "Dubai",
-  hours: ['17:00', '20:00', '22:00'],
-  seats: ['A1', 'A2', 'A3'],
-},
-II:{},
-III:{},
-IV:{},
-V:{},
-VI:{},
-VII:{},
-VIII:{},
-IX:{}
-}
 
 const switchEmployedPlane = (plane: string) => {
   switch (plane) {
@@ -182,9 +157,8 @@ const firstStepHandler = (step: number, transforming: number) => {
 
 const setSeatMap = () => {
   const plane = employedPlane[sessionStorage.getItem('departure')];
-  const vipSeats = Array.from(document.querySelectorAll(`.${plane}SeatVip`));
   const seats = Array.from(document.querySelectorAll(`.${plane}Seat`));
-  const allSeats = [...vipSeats, ...seats];
+  const allSeats = [...seats];
   const usingSeats = allSeats
   .filter((seat: HTMLElement) => seat.classList.contains('active'))
   .map((seat: HTMLElement) => {
@@ -264,7 +238,7 @@ const packageHandler = () => {
   }
 };
 
-const settingPaymentOptions = () => {
+export const settingPaymentOptions = () => {
   const buttonToLogIn: HTMLButtonElement = document.querySelector('.summary__log-in');
   const buttonToPay: HTMLButtonElement = document.querySelector('.summary__pay');
 

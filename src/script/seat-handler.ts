@@ -14,7 +14,7 @@ export const checkSeat = async (plane: string) => {
   }
 
   const dataOfFlight = await seatsVerify(flight);
-console.log(dataOfFlight.seats, plane);
+
   if (dataOfFlight) {
     dataOfFlight.seats.forEach((seat: Seats) => {
       document.querySelectorAll(`.${plane}`).forEach((planeSeat: HTMLDivElement) => {
@@ -90,7 +90,7 @@ export const seatConstructor_DeltaA320_200_1Seats = (DeltaA320_200_1Seats: any) 
         seatToDisplay.setAttribute('data-seat', `${row}${seat.number}`);
         seatToDisplay.setAttribute('data-slot', `${seat.slot}`);
         seatToDisplay.setAttribute('data-vip', `${seat.isVip}`);
-        if (sector === 'VIP1' || sector === 'VIP2') seatToDisplay.classList.add('DeltaA320_200_1SeatVip')
+        if (sector === 'VIP1' || sector === 'VIP2') seatToDisplay.classList.add('DeltaA320_200_1Seat', 'DeltaA320_200_1SeatVip')
         else seatToDisplay.classList.add('DeltaA320_200_1Seat');
         if(!seat.slot) seatToDisplay.classList.add('disabled');
         seatToDisplay.addEventListener('click', activator);
@@ -120,7 +120,7 @@ export const seatConstructor_KLM_B737_700_1Seats = (KLM_B737_700_1Seats: any) =>
         seatToDisplay.setAttribute('data-seat', `${row}${seat.number}`);
         seatToDisplay.setAttribute('data-slot', `${seat.slot}`);
         seatToDisplay.setAttribute('data-vip', `${seat.isVip}`);
-        if (sector === 'VIP1' || sector === 'VIP2') seatToDisplay.classList.add('KLM_B737_700_1SeatVip')
+        if (sector === 'VIP1' || sector === 'VIP2') seatToDisplay.classList.add('KLM_B737_700_1Seat','KLM_B737_700_1SeatVip')
         else seatToDisplay.classList.add('KLM_B737_700_1Seat');
         if(!seat.slot) seatToDisplay.classList.add('disabled');
         seatToDisplay.addEventListener('click', activator);

@@ -123,18 +123,6 @@ section[data-row='F']{
   }
 }
 
-.DeltaA320_200_1SeatVip{
-  margin: 1.5px 2.25px;
-  width: 16px;
-  height: 16px;
-  background-color: gold;
-  border: 2px solid black;
-  cursor: pointer;
-  &.active{
-    background-color: blue;
-  }
-}
-
 .DeltaA320_200_1Seat{
   margin-top: 1.7px;
   width: 10px;
@@ -142,6 +130,18 @@ section[data-row='F']{
   background-color: lightgrey;
   border: 1px solid black;
   flex-basis: 25%;
+  cursor: pointer;
+  &.active{
+    background-color: blue;
+  }
+}
+
+.DeltaA320_200_1SeatVip{
+  margin: 1.5px 2.25px;
+  width: 16px;
+  height: 16px;
+  background-color: gold;
+  border: 2px solid black;
   cursor: pointer;
   &.active{
     background-color: blue;
@@ -227,11 +227,11 @@ section[data-sector="VI"]{
   }
 }
 
-.KLM_B737_700_1SeatVip{
-  margin-top: 2.1px;
+.KLM_B737_700_1Seat{
+  margin-top: 1.7px;
   width: 10px;
   height: 16.5px;
-  background-color: gold;
+  background-color: lightgrey;
   border: 1px solid black;
   flex-basis: 25%;
   cursor: pointer;
@@ -240,11 +240,11 @@ section[data-sector="VI"]{
   }
 }
 
-.KLM_B737_700_1Seat{
-  margin-top: 1.7px;
+.KLM_B737_700_1SeatVip{
+  margin-top: 2.1px;
   width: 10px;
   height: 16.5px;
-  background-color: lightgrey;
+  background-color: gold;
   border: 1px solid black;
   flex-basis: 25%;
   cursor: pointer;

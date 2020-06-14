@@ -1,5 +1,6 @@
 import { logInHandler } from './api-handlers/user';
 
+import { settingPaymentOptions } from '..';
 import { inputValidator } from './helpers';
 
 const loginHandler = async (email: string, password: string) => {
@@ -10,11 +11,15 @@ const loginHandler = async (email: string, password: string) => {
   if (userLoggedIn) {
 
     document.querySelector('.loader').classList.remove('modal--visible')
+
     sessionStorage.setItem('user', JSON.stringify(userLoggedIn));
     document.getElementById('login-info').innerHTML = userLoggedIn.email;
     document.querySelector('.login__sign-in').innerHTML = "Wyloguj";
+    
+    sessionStorage.setItem('accountState', `${userLoggedIn.accountState}`)
+    document.querySelector('.summary__account').innerHTML = `${sessionStorage.getItem('accountState')} $`
+    
     document.querySelector('.login').classList.remove('modal--visible');
-
   } else {
 
     document.querySelector('.loader').classList.remove('modal--visible');
@@ -25,7 +30,7 @@ const loginHandler = async (email: string, password: string) => {
 
 document.querySelector('.login__sign-in').addEventListener('click', (event: Event) => {
 
-  const logIn = event.target as HTMLSpanElement;
+  const logIn = event.target as HTMLSpanElement | HTMLButtonElement;
 
   if (sessionStorage.getItem('user')) {
     if (window.confirm("Czy napewno chcesz się wylogować?")){
@@ -51,6 +56,7 @@ document.querySelector('.login__log-in').addEventListener('click', async (e) => 
   if ([emailInput, passwordInput].map(input => inputValidator(input)).every(info => info === true)) {
 
     await loginHandler(emailInput.value, passwordInput.value);
+    settingPaymentOptions();
 
   } else {
 
@@ -64,3 +70,9 @@ document.querySelector('.login__close').addEventListener('click', (e) => {
   e.preventDefault();
   document.querySelector('.login').classList.remove('modal--visible');
 });
+
+
+document.querySelector('.summary__log-in').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.querySelector('.login').classList.add('modal--visible');
+})
