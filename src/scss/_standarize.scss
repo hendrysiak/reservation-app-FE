@@ -8,5 +8,18 @@ body{
 }
 
 input{
-  // border-radius: 10px;
+  height: 3em;
+  margin: 1vh 2.5vw;
+  @media (max-width: 400px) {
+    margin: .8vh 2.5vw;
+    height: 2em;
+  }
+}
+select{
+  height: 3em;
+  margin: 1vh 2.5vw;
+  @media (max-width: 400px) {
+    margin: .8vh 2.5vw;
+    height: 2em;
+  }
 }

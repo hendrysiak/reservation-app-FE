@@ -6,15 +6,17 @@ document.querySelector('.bank__close').addEventListener('click', () => {
 });
 
 const orderFinish = async (price: number, accountState: number) => {
-  const email = JSON.parse(sessionStorage.getItem('user')).email;
-  const value = accountState - price;
 
- const updatedData = await rechargeAccount(email, value);
+  if(sessionStorage.getItem('user')) {
+    const email = JSON.parse(sessionStorage.getItem('user')).email;
+    const value = accountState - price;
 
- console.log(updatedData);
- sessionStorage.setItem('accountState',`${updatedData.accountState}`);
- sessionStorage.setItem('user', JSON.stringify(updatedData));
+    const updatedData = await rechargeAccount(email, value);
 
+    console.log(updatedData);
+    sessionStorage.setItem('accountState',`${updatedData.accountState}`);
+    sessionStorage.setItem('user', JSON.stringify(updatedData));
+  }
  alert('Poprawnie złożono zamówienie! Czekaj na wiadomość z biletami!')
  sessionStorage.clear();
  window.location.reload();
@@ -27,7 +29,7 @@ document.querySelector('.summary__order').addEventListener('click', async (e) =>
     const price = Number(sessionStorage.getItem('price'));
     const accountState = Number(sessionStorage.getItem('accountState'));
 
-    if(price < accountState) {
+    if(accountState >= price) {
       const seats = JSON.parse(sessionStorage.getItem('using-seats')).map((seat: {seat: string; isVip: boolean}) => {
         const seatInfo = seat.seat.split('');
         return {row: seatInfo[0], seat: Number(seatInfo[1])};
@@ -47,6 +49,7 @@ document.querySelector('.summary__order').addEventListener('click', async (e) =>
     } else {
       alert('Za mało środków na koncie!')
       if(window.confirm('Czy chcesz doładować swoje konto?')) {
+        document.querySelector('.bank__value').innerHTML = sessionStorage.getItem('price') + " $";
         document.querySelector('.bank').classList.add('modal--visible');
         
       }
