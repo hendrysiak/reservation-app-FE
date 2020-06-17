@@ -1,5 +1,7 @@
+@import './variables';
+
 .services{
-  overflow: scroll;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   &__title{
@@ -20,7 +22,7 @@
     flex-direction: column;
   }
   &__bundle{
-    background-color: lightblue;
+    background-color: $input-color;
     height: 32%;
     margin: 3px 0;
     padding: 8px;
@@ -53,6 +55,6 @@
 
 .package-button{
   &--active{
-    background-color: yellow;
+    background-color: $main-color;
   }
 }

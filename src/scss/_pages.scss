@@ -8,11 +8,6 @@ body{
   }
 }
 
-button{
-  background-color: #fff;
-  border-radius: 25px;
-  
-}
 
 .button--next{
   width: 90%;
@@ -51,7 +46,7 @@ button{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #fff;
+    background-color: $secondary-color;
     z-index: 1;
   }
 }
@@ -59,7 +54,7 @@ button{
 .step{
   width: 3em;
   height: 3em;
-  background-color: #fff;
+  background-color: $secondary-color;
   border: 4px solid $main-color;
   border-radius: 50%;
   display: flex;
@@ -68,7 +63,7 @@ button{
   z-index: 2;
   &.active{
     background-color: $main-color;
-    border: 4px solid white;
+    border: 4px solid $secondary-color;
   }
 } 
 

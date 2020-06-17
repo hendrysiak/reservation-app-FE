@@ -1,3 +1,5 @@
+@import './variables';
+
 html{
   height: 100vh;
 }
@@ -5,11 +7,16 @@ html{
 body{
   height: 100vh;
   position: relative;
+  color: white;
 }
 
 input{
   height: 3em;
   margin: 1vh 2.5vw;
+  border: none;
+  border-radius: 25px;
+  background-color: $input-color;
+  color: white;
   @media (max-width: 400px) {
     margin: .8vh 2.5vw;
     height: 2em;
@@ -18,8 +25,22 @@ input{
 select{
   height: 3em;
   margin: 1vh 2.5vw;
+  border: none;
+  border-radius: 25px;
+  background-color: $input-color;
+  color: white;
   @media (max-width: 400px) {
     margin: .8vh 2.5vw;
     height: 2em;
   }
+}
+
+button{
+  margin: 2px auto;
+  border: none;
+  background-color: $secondary-color;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  max-width: 80%;
 }
