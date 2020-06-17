@@ -125,17 +125,23 @@ const setActiveStep = (step: number) => {
 };
 
 const movingHandler = (transforming: number) => {
-  const form = document.querySelector('form');
-  const style = window.getComputedStyle ? getComputedStyle(form) : form.currentStyle;
-  const marginLeft = parseInt(style.marginLeft) || 0;
-  const marginRight = parseInt(style.marginRight) || 0;
+  const step = sessionStorage.getItem('step');
+  document.querySelectorAll('.form').forEach((form: HTMLFormElement) => form.style.visibility = "hidden")
+  document.querySelectorAll('.form').forEach((form: HTMLFormElement) => form.style.display = "none")
+  document.getElementById(step).style.visibility = "visible";
+  document.getElementById(step).style.display = "block";
+
+  // const form = document.querySelector('form');
+  // const style = window.getComputedStyle ? getComputedStyle(form) : form.currentStyle;
+  // const marginLeft = parseInt(style.marginLeft) || 0;
+  // const marginRight = parseInt(style.marginRight) || 0;
 
 
-  transforming -= form.clientWidth + marginRight + 32;
-  sessionStorage.setItem('transforming', `${transforming}`)
+  // transforming -= form.clientWidth + marginRight + 32;
+  // sessionStorage.setItem('transforming', `${transforming}`)
 
-  const main: HTMLElement = document.querySelector('.main__forms');
-  main.style.transform = `translate(${transforming}px, 0)`;
+  // const main: HTMLElement = document.querySelector('.main__forms');
+  // main.style.transform = `translate(${transforming}px, 0)`;
 };
 
 const firstStepHandler = (step: number, transforming: number) => {
@@ -205,8 +211,8 @@ const setPrices = () => {
 
 const secondStepHandler = (step: number, transforming: number) => {
   if (Number(sessionStorage.getItem('number-of-seats')) === 0) {
-    movingHandler(transforming);
     setActiveStep(step);
+    movingHandler(transforming);
     setPrices();
   } else return alert('Przypisz wszystkie miejsca przed przejściem dalej!');
 
@@ -305,8 +311,8 @@ const summaryDisplayHandler = () => {
 const thirdStepHandler = (step: number, transforming: number) => {
 
   if(packageHandler()) {
-    movingHandler(transforming);
     setActiveStep(step);
+    movingHandler(transforming);
     summaryDisplayHandler();
   } else {
     alert('Nie wybrano pakietu!')

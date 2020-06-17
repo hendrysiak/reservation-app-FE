@@ -1,9 +1,11 @@
 @import './variables';
 
 .form{
-  width: calc(100%/5);
+  margin: 0 auto;
+  // transform: translateX(25%);
+  visibility: hidden;
+  min-width: 80%;
   max-width: 411px;
-  // height: 576px; // 70%?
   height: 100%;
   max-height: 576px; // 70%?
   margin: auto 16px;
@@ -13,9 +15,10 @@
   border-radius: 20px;
   background-color: $main-color;
   transition-duration: .5s;
-  transform: translateX(-10%);
 }
 .form-init{
+  visibility: visible;
+
   &__title{
     margin: 0;
     text-align: center;
@@ -29,6 +32,12 @@
     margin: 1vh 2.5vw;
   }
 }
+.form-seats{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}  
+
+  
 
 .counter{
   display: flex;

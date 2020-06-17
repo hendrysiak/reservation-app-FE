@@ -1,6 +1,10 @@
 .login{
   &__form{
+    margin: 0 auto;
+    transform: translateX(4%);
+    min-width: 60%;
     padding: auto 16px;
     max-height: 350px;
+    visibility: visible !important ;
   }
 }

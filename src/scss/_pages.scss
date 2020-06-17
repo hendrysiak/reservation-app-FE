@@ -69,11 +69,11 @@ body{
 
 .main{
   // padding-top: 8px;
-  overflow-x: hidden;
-  width: 100vw;
+  overflow-y: hidden;
+  // width: 100vw;
   max-width: 411px;
   background-color: rgba(0%,0%,0%, .5);
-  min-height: 60vh;
+  height: 75vh;
   @media (max-width: 500px) { //ustalić optymalną wielkość na innych ekranach
     height: 92vh;
   }
@@ -81,11 +81,11 @@ body{
 
 .main__forms{
   position: relative;
-  left: 16px;
-  padding-left: 16px;
-  width: 500%;
-  height: 70%;
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+  height: 75%;
+  // max-height: 100vh;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
   transition: 1s;
 }
