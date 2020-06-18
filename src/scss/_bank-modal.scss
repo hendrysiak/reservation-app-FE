@@ -2,6 +2,10 @@
   &__modal{
   width: 90%;
   height: 90%;
+  @media (max-width: 500px){
+    width: 100%;
+    height: 100%;
+  }
   background-color: $main-color;
   position: absolute;
   top: 50%;
@@ -12,6 +16,7 @@
   }
   &__title{
     text-align: center;
+    margin-bottom: 0px;
   }
   &__price{
     margin-left: 10%;
@@ -23,6 +28,9 @@
     margin: 0 auto;
     width: 60%;
     flex: 4;
+    @media (max-width: 500px){
+      flex: 3;
+    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +53,9 @@
   &__choose{
     padding: 16px;
     flex: 6;
+    @media (max-width: 500px){
+      flex: 7;
+    }
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-column-gap: 3.33%;
@@ -67,5 +78,8 @@
     top: 16px;
     right: 16px;
     cursor: pointer;
+  }
+  &__item {
+    width: 100%;
   }
 }

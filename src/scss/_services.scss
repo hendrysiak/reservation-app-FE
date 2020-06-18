@@ -4,6 +4,7 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   &__title{
     margin: 8px 0;
     text-align: center;
@@ -14,7 +15,8 @@
     flex: 1;
   }
   &__bundles{
-    margin-bottom: 8px;
+    margin: 0 auto;
+    // margin-bottom: 8px;
     align-self: center;
     width: 90%;
     flex: 14;
@@ -24,7 +26,7 @@
   &__bundle{
     background-color: $input-color;
     height: 32%;
-    margin: 3px 0;
+    margin: 3px auto;
     padding: 8px;
     display: flex;
     flex-direction: column;

@@ -7,6 +7,7 @@ import './script/bank-handler';
 import  './script/form';
 import './script/login-handler';
 import './script/payment-handler';
+import './script/slider';
 
 import './scss/index.scss';
 

@@ -14,7 +14,7 @@ const loginHandler = async (email: string, password: string) => {
 
     sessionStorage.setItem('user', JSON.stringify(userLoggedIn));
     document.getElementById('login-info').innerHTML = userLoggedIn.email;
-    document.querySelector('.login__sign-in').innerHTML = "Wyloguj";
+    document.querySelector('.main__sign-in').innerHTML = "Wyloguj";
     
     sessionStorage.setItem('accountState', `${userLoggedIn.accountState}`)
     document.querySelector('.summary__account').innerHTML = `${sessionStorage.getItem('accountState')} $`
@@ -28,7 +28,7 @@ const loginHandler = async (email: string, password: string) => {
   }
 };
 
-document.querySelector('.login__sign-in').addEventListener('click', (event: Event) => {
+document.querySelector('.main__sign-in').addEventListener('click', (event: Event) => {
 
   const logIn = event.target as HTMLSpanElement | HTMLButtonElement;
 

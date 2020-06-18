@@ -9,11 +9,11 @@
 </head>
 <body>
   <header class="header">
-    <p class="header__info">Z powodu epidemii COVID-19, mogą nastąpić opóźnienia w niektórych lotach.</p>
-    <p class="header__login">Jesteś zalogowana/-y jako: <span id="login-info">niezalogowany</span><span class="login__sign-in">Zaloguj</span></p>
+    <p class="header__login">Jesteś zalogowana/-y jako: <span id="login-info">niezalogowany</span></p>
   </header>
   <main class="main">
     <div class="main__forms">
+      <span class="main__sign-in">Zaloguj</span>
   <form id="0" class="form form-init">
     <h1 class="form-init__title">SimFly</h1>
     <select class="form-init__place" id='departure'>
@@ -160,7 +160,7 @@
     <button class="bank__item">ING</button>
     <button class="bank__item">Alior bank</button>
     <button class="bank__item">PKO Bank Polski</button>
-    <button class="bank__item">Sandanted Bank Polska</button>
+    <button class="bank__item">Santander Bank Polska</button>
     <button class="bank__item">BNP Paribas Bank Polska</button>
     <button class="bank__item">Getin Noble Bank</button>
     <button class="bank__item">Nest Bank</button>
@@ -183,6 +183,17 @@
 </div>
 <div class="modal  loader">
   <div class="lds-hourglass"></div>
+</div>
+<div class="slider">
+  <div class="slider__content">
+    <p class="slider__info"></p>
+  </div>
+  <div class="slider__stepper">
+    <div class="slider__step"></div>
+    <div class="slider__step"></div>
+    <div class="slider__step"></div>
+    <div class="slider__step"></div>
+  </div>
 </div>
 </body>
 </html>
