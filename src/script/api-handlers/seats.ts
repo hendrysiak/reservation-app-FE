@@ -8,6 +8,6 @@ export const seatsVerify = async (flight: Flight) => {
 };
 
 export const orderHandler = async (order: Order) => {
-    const response = await axios.post('/orders/new', { order });
+    const response = await axios.post(process.env.API_URL + '/orders/new', { order });
     return response.data;
 };

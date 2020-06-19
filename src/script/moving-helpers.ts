@@ -1,86 +1,8 @@
-  // tslint:disable: forin
-
-import { AIRBUS320Seats, DeltaA320_200_1Seats, employedPlane, formValidator, KLM_B737_700_1Seats, pricing, timetable } from './script/variables';
-import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats, checkSeat} from './script/seat-handler';
-import { settingPaymentOptions } from './script/payment-handler';
-
-import './script/bank-handler';
-import  './script/form';
-import './script/login-handler';
-import './script/payment-handler';
-import './script/slider';
-import './script/date-handlers';
-
-import './scss/index.scss';
-
-// Min date handler
+import { AIRBUS320Seats, DeltaA320_200_1Seats, employedPlane, formValidator, KLM_B737_700_1Seats, pricing, timetable } from './variables';
+import { seatConstructor_AIRBUS320, seatConstructor_DeltaA320_200_1Seats, seatConstructor_KLM_B737_700_1Seats, checkSeat} from './seat-handler';
+import { settingPaymentOptions } from './payment-handler.ts'
 
 sessionStorage.setItem('step', `0`);
-sessionStorage.setItem('transforming', `0`)
-
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth() > 9 ? today.getMonth() + 1 : `0${today.getMonth() + 1}`;
-const day = today.getDate() > 9 ? today.getDate() : `0${today.getDate()}`;
-
-const minDate = `${year}-${month}-${day}`;
-
-document.querySelector('.form-init__date').setAttribute('value', minDate);
-document.querySelector('.form-init__date').setAttribute('min', minDate);
-
-const destinationChangeHandler = (select: HTMLSelectElement): void => {
-   const destinationOfFly = document.getElementById('destination');
-   destinationOfFly.style.border = ''
-   destinationOfFly.innerHTML = '';
-    for (const departure in timetable) {
-      if (select.value === departure) {
-        for (const destination in timetable[departure]){
-          const option = document.createElement('option');
-          if (!sessionStorage.getItem('destination')) sessionStorage.setItem('destination', destination);
-          option.value = destination;
-          option.innerText = destination.charAt(0).toUpperCase() + destination.slice(1);
-          destinationOfFly.appendChild(option);
-        }
-      }
-    }
-    
-    if (!sessionStorage.getItem('date')) sessionStorage.setItem('date', minDate);
-}
-
-const setHourOfDeparture = (): void => {
-  const departureTimeSelect = document.getElementById('time');
-  departureTimeSelect.style.border = ''
-  departureTimeSelect.innerHTML = '';
-  const departure: HTMLSelectElement = document.getElementById('departure') as HTMLSelectElement;
-  const destination: HTMLSelectElement = document.getElementById('destination') as HTMLSelectElement;
-
-  timetable[departure.value][destination.value].forEach((hour: string) => {
-    const timeOption = document.createElement('option');
-    timeOption.value = hour;
-    timeOption.innerText = hour;
-    departureTimeSelect.appendChild(timeOption);
-  })
-  if (!sessionStorage.getItem('time')) sessionStorage.setItem('time', timetable[departure.value][destination.value][0]);
-}
-
-document.getElementById('departure').addEventListener('change', () => destinationChangeHandler(event.target as HTMLSelectElement));
-document.getElementById('destination').addEventListener('change', (event) => {
-  const target = event.currentTarget as HTMLSelectElement
-  console.log(target.value);
-});
-document.querySelectorAll('.form-init__place').forEach((place: HTMLSelectElement) => place.addEventListener('change', () => setHourOfDeparture()));
-
-const selects = document.getElementsByTagName('select');
-const inputs = document.getElementsByTagName('input');
-const formsInputs = [...Array.from(selects), ...Array.from(inputs)];
-
-
-const setSessonsVariables = () => {
-  formsInputs.forEach(el => {
-    sessionStorage.setItem(el.id, el.value);
-  });
-}
-
 
 const switchEmployedPlane = (plane: string) => {
   switch (plane) {
@@ -103,8 +25,6 @@ const switchEmployedPlane = (plane: string) => {
 
 const stepper = document.querySelectorAll('.step');
 
-
-
 const setActiveStep = (step: number) => {
   stepper.forEach((stepCircle: HTMLDivElement) => stepCircle.classList.remove('active'));
   stepper[step+1].classList.add('active');
@@ -119,12 +39,9 @@ const movingHandler = (transforming: number) => {
   const step = sessionStorage.getItem('step');
   document.querySelectorAll('.form').forEach((form: HTMLFormElement) => form.style.visibility = "hidden")
   document.querySelectorAll('.form').forEach((form: HTMLFormElement) => form.style.display = "none")
-  // document.querySelectorAll('.form').forEach((form: HTMLFormElement) => form.classList.remove('form--visible'))
-  // document.querySelectorAll('.form').forEach((form: HTMLFormElement) => form.style.display = "none")
   document.getElementById(step).style.visibility = "visible";
   document.getElementById(step).style.display = "block";
-  // document.getElementById(step).classList.add('form--visible');
-  // document.getElementById(step).style.display = "block";
+
 };
 
 const firstStepHandler = (step: number, transforming: number) => {
@@ -227,6 +144,7 @@ const packageHandler = () => {
   }
 };
 
+
 const summaryDisplayHandler = () => {
 
   const className = 'summary__target';
@@ -258,7 +176,7 @@ const summaryDisplayHandler = () => {
 
   document.querySelector('.summary__sum--all').innerHTML = `${sessionStorage.getItem('price')} $`;
 
-  const accountState = JSON.parse(sessionStorage.getItem('user')) ? JSON.parse(sessionStorage.getItem('user')).accountState : null;
+  const accountState = JSON.parse(sessionStorage.getItem('user')).accountState;
 
   document.querySelector('.summary__account').innerHTML = `${accountState ? accountState : 0} $`
 
@@ -291,3 +209,13 @@ document.querySelector('.button--next').addEventListener('click', (): void => {
 
   
 });
+
+const selects = document.getElementsByTagName('select');
+const inputs = document.getElementsByTagName('input');
+const formsInputs = [...Array.from(selects), ...Array.from(inputs)];
+
+const setSessonsVariables = () => {
+  formsInputs.forEach(el => {
+    sessionStorage.setItem(el.id, el.value);
+  });
+}

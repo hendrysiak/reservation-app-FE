@@ -5,6 +5,31 @@ document.querySelector('.bank__close').addEventListener('click', () => {
   document.querySelector('.bank').classList.remove('modal--visible');
 });
 
+export const settingPaymentOptions = () => {
+  const buttonToLogIn: HTMLButtonElement = document.querySelector('.summary__log-in');
+  const buttonToPay: HTMLButtonElement = document.querySelector('.summary__pay');
+
+  buttonToPay.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.bank').classList.add('modal--visible');
+    document.querySelector('.bank__value').innerHTML = `${sessionStorage.getItem('price') ? sessionStorage.getItem('price') : 0} $`
+  });
+
+  buttonToLogIn.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelector('.login').classList.add('modal--visible');
+  });
+
+  if (sessionStorage.getItem('user')) {
+    buttonToPay.innerHTML = "Doładuj konto";
+    buttonToLogIn.style.display = "none";
+  } else {
+    buttonToPay.innerHTML = "Kup bez logowania";
+    buttonToLogIn.style.display = "block";
+    buttonToLogIn.innerHTML = "Zaloguj się by kupić"
+  }
+}
+
 const orderFinish = async (price: number, accountState: number) => {
 
   if(sessionStorage.getItem('user')) {

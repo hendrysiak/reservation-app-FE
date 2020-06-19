@@ -70,9 +70,9 @@ body{
 .main{
   overflow-y: hidden;
   max-width: 411px;
-  height: 75vh;
+  height: 70vh;
   z-index: 10;
-  @media (max-width: 568px) { //ustalić optymalną wielkość na innych ekranach
+  @media (max-width: 670px) { //ustalić optymalną wielkość na innych ekranach
     height: 92vh;
   }
   @media (max-height: 500px) {

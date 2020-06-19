@@ -14,7 +14,7 @@
   <main class="main">
     <div class="main__forms">
       <span class="main__sign-in">Zaloguj</span>
-  <form id="0" class="form form-init">
+  <form id="0" class="form form-init form--visible">
     <h1 class="form-init__title">SimFly</h1>
     <select class="form-init__place" id='departure'>
       <option value="" disabled selected>Miejsce wylotu</option>
@@ -174,7 +174,7 @@
   </div>
 </div>
 <div class="modal login ">
-  <form class="login__form form">
+  <form class="form login__form ">
   <input type="email" data-input="email" class="login__mail" placeholder="Login">
   <input type="password" data-input="password" class="login__password" placeholder="Hasło">
   <button class="login__log-in">Zaloguj się, by kupić</button>
@@ -185,11 +185,11 @@
   <div class="lds-hourglass"></div>
 </div>
 <div class="slider">
-  <div class="slider__content">
-    <p class="slider__info"></p>
+  <div class="slider__content slider__content--first">
+    <p class="slider__info">Profesjonalna obsługa</p>
   </div>
   <div class="slider__stepper">
-    <div class="slider__step"></div>
+    <div class="slider__step slider__step--active"></div>
     <div class="slider__step"></div>
     <div class="slider__step"></div>
     <div class="slider__step"></div>
